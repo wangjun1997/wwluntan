@@ -1,0 +1,6 @@
+#用户模块(提供者)
+ ##用户登陆 [/user/login](/user/login)   
+ ##用户注册 [/user/register](/user/register)
+ ##查询用户个人信息 [/user/showInfo](/user/showInfo)
+ ##修改用户个人信息 [/user/changeInfo](/user/changeInfo)
+ ##注销登陆 [/user/logout](/user/logout)

@@ -1,0 +1,5 @@
+#发帖模块(提供者)
+* ##发布帖子 [/topic/create](/topic/create)
+* ##发布修改帖子 [/topic/changeTopic](/topic/changeTopic)
+* ##查看帖子 [/topic/showInfo](/topic/showInfo)
+* ##删除帖子 [/topic/delete](/topic/delete)
