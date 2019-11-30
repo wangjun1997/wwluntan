@@ -1,5 +1,5 @@
 server:
-  port: 80
+  port: 808
 dubbo:
   protocol:
     port: -1
