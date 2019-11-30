@@ -6,6 +6,8 @@ import com.qf.luntan_user.mapper.UserMapper;
 import com.qf.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.List;
+
 /**
  * @author wangjun
  * @name wwluntan
@@ -20,5 +22,10 @@ public class UserServiceImpl implements IUserService {
     @Override
     public Integer register(User user) {
         return userMapper.insert(user);
+    }
+
+    @Override
+    public List<User> userlist() {
+        return userMapper.selectList(null);
     }
 }
