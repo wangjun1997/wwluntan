@@ -10,4 +10,8 @@ import com.qf.entity.User;
  */
 public interface IUserService {
     Integer register(User user);
+    User login(User user);
+    int changeInfo(User user);
+
+    User selectById(Integer uid);
 }

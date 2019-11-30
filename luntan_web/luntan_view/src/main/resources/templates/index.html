@@ -22,17 +22,19 @@
     		<span style="font-size:12px;">荣誉奖项：<br>
             <a href="https://www.mi.com" target="_blank">全网最热门网站</a><br>
             <a href="https://www.rom.com" target="_blank">安卓开源联盟网站成员</a><br>
-            <a href="https://www.rom.com" target="_blank">B&A开发大奖第一名</a><br>
+            <a href="/topic.html">发帖</a><br>
             <br>
             </span>
     </div>
      <div style="border:0px solid red;width:60px;height:100px;float:left;">
-    		<span style="font-size:12.5px;text-align:center;"><a href="javascript:openWin()">注册账户</a><br>
+    		<span style="font-size:12.5px;text-align:center;"><a th:href="${session.user==null?'userReg.html':'userChange.html'}" th:text="${session.user==null?'注册账户':'个人中心'}">注册账户</a><br>
             </span>
-            <span style="font-size:12.5px;text-align:center;"><a href="javascript:openWin1()">登录账户</a><br>
+            <span style="font-size:12.5px;text-align:center;"><a th:href="${session.user==null?'userlogin.html':'user/logout'}" th:text="${session.user==null?'登陆账号':'退出登陆'}">登录账户</a><br>
             </span>
-            <span style="font-size:12.5px;text-align:center;"><a href="index(Dark).html" title="仅在当前页面生效，推荐夜间使用">黑暗模式</a><br>
+            <span style="font-size:12.5px;text-align:center;"><a href="balck.html" title="仅在当前页面生效，推荐夜间使用">黑暗模式</a><br>
             </span>
+         <!--    <span style="font-size:12.5px;text-align:center;"><a th:text="${session.user.username==null?'':session.user.username}">黑暗模式</a><br>
+            </span>-->
     </div>
     <div style="border:0px solid red;width:100%;height:42px;float:left;">
             <div class="nav">

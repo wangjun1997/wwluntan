@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpSession;
 import java.util.Date;
 
 
@@ -22,11 +23,6 @@ public class UserController {
 
     @Reference
     private IUserService userService;
-
-    @RequestMapping("toregister")
-    public String toregister(){
-        return "userReg";
-    }
 
     /**
      * 用户注册
@@ -51,4 +47,41 @@ public class UserController {
         return result;
     }
 
+    /**
+     * 用户登陆
+     * @param user
+     * @param session
+     * @return
+     */
+    @RequestMapping("login")
+    @ResponseBody
+    public Result login(User user, HttpSession session){
+        Result result = new Result();
+
+        User res =  userService.login(user);
+        if(res!=null) {
+            result.setRes(true);
+            session.setAttribute("user",res);
+        }else{
+            result.setRes(false);
+            result.setData("用户名或密码错误");
+        }
+        return result;
+    }
+
+    @RequestMapping("changeInfo")
+    @ResponseBody
+    public Result changeInfo(User user,HttpSession session){
+        Result result = new Result();
+        System.out.println(user);
+        int u =  userService.changeInfo(user);
+        if(u>0){
+             result.setRes(true);
+             session.invalidate();
+        }else{
+            result.setRes(false);
+            result.setData("出现未知错误！");
+        }
+        return result;
+    }
 }

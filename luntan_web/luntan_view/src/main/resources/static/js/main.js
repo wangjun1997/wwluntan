@@ -45,7 +45,7 @@ tab.onmouseover=function() {clearInterval(MyMar)};
 tab.onmouseout=function() {MyMar=setInterval(Marquee,speed)}; 
 
 function openWin(){
-		var url="/user/toregister";
+		var url="userReg.html";
 		open(url,"","width=1024px,height=748px")
 	}
 	
