@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.qf</groupId>
-    <artifactId>luntan_user</artifactId>
+    <artifactId>luntan_after</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>luntan_user</name>
+    <name>luntan_after</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
@@ -20,15 +20,23 @@
 
     <dependencies>
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+
+        <!--添加dubbo依赖-->
+
+
+
+        <dependency>
             <groupId>com.qf</groupId>
             <artifactId>luntan_service_api</artifactId>
             <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus-boot-starter</artifactId>
-            <version>3.2.0</version>
         </dependency>
 
         <dependency>
@@ -42,24 +50,10 @@
                 </exclusion>
             </exclusions>
         </dependency>
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-        </dependency>
     </dependencies>
 
     <build>
-        <resources>
-            <resource>
-                <directory>src/main/java</directory>
-                <includes>
-                    <include>com/qf/luntan_user/mapper/*.xml</include>
-                </includes>
-            </resource>
-            <resource>
-                <directory>src/main/resources</directory>
-            </resource>
-        </resources>
+
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

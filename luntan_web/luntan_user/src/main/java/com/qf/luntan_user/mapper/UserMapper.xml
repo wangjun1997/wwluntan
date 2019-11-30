@@ -36,5 +36,13 @@
         where uID = #{uid,jdbcType=INTEGER}
     </update>
 
-
+    <update id="updateuser" parameterType="com.qf.entity.User">
+        update user
+        <set>
+            userName=#{username},
+            userEmail=#{useremail},
+            userSex=#{usersex}
+        </set>
+        where uID = #{uid}
+    </update>
 </mapper>

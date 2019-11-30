@@ -11,4 +11,5 @@ import com.qf.entity.User;
 public interface UserMapper extends BaseMapper<User> {
 
     int updateInfo(User user);
+    int updateuser(User user);
 }

@@ -7,6 +7,8 @@ import com.qf.luntan_user.mapper.UserMapper;
 import com.qf.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.List;
+
 /**
  * @author wangjun
  * @name wwluntan
@@ -43,4 +45,26 @@ public class UserServiceImpl implements IUserService {
         return userMapper.selectById(uid);
     }
 
+
+    /*后端查询所有用户的方法*/
+    @Override
+    public List<User> userlist() {
+        return userMapper.selectList(null);
+    }
+
+    /*后端查询单个用户用于修改的方法*/
+    @Override
+    public User getUserById(Integer id) {
+        QueryWrapper queryWrapper = new QueryWrapper();
+        queryWrapper.eq("uID",id);
+        User user = userMapper.selectOne(queryWrapper);
+        return user;
+    }
+
+    /*修改用户的提交方法*/
+    @Override
+    public int getUser(User user) {
+       return userMapper.updateuser(user);
+
+    }
 }
