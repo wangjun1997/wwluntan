@@ -9,5 +9,6 @@ public class Config implements WebMvcConfigurer {
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("after/login.html").setViewName("after/login");
+        registry.addViewController("after/adminadd.html").setViewName("after/adminadd");
     }
 }

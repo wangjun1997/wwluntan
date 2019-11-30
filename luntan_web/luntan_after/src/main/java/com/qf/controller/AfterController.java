@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -66,6 +67,19 @@ public class AfterController {
         System.out.println(user.getUsername());
         System.out.println(user.getUseremail());
         int count = userService.getUser(user);
+        if(count>0){
+            return "redirect:/after/userList";
+        }
+        return null;
+    }
+
+    @RequestMapping("userAdd")
+    public String userAdd(User user){
+        user.setUserbirthday(new Date(System.currentTimeMillis()));
+        user.setUserclass(2);
+        user.setUserregdate(new Date(System.currentTimeMillis()));
+        user.setUserpoint(3);
+        int count = userService.register(user);
         if(count>0){
             return "redirect:/after/userList";
         }
