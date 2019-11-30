@@ -14,4 +14,8 @@ public interface IUserService {
     Integer register(User user);
 
     List<User> userlist();
+
+    User getUserById(Integer id);
+
+    int getUser(User user);
 }

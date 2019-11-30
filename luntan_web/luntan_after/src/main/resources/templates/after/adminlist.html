@@ -61,7 +61,6 @@
 				<th width="150">邮箱</th>
 				<th>性别</th>
 				<th width="130">加入时间</th>
-				<th width="100">是否已启用</th>
 				<th width="100">操作</th>
 			</tr>
 		</thead>
@@ -72,9 +71,10 @@
 				<td th:text="${user.username}">zhangsan</td>
 				<td th:text="${user.useremail}">admin@mail.com</td>
 				<td th:text="${user.usersex ? '男':'女'}">栏目编辑</td>
-				<td th:text="${user.userbirthday}">2014-6-11 11:11:42</td>
-				<td class="td-status"><span class="label radius">已停用</span></td>
-				<td class="td-manage"><a style="text-decoration:none" onClick="admin_start(this,'10001')" href="javascript:;" title="启用"><i class="Hui-iconfont">&#xe615;</i></a> <a title="编辑" href="javascript:;" onclick="admin_edit('管理员编辑','admin-add.html','2','800','500')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a> <a title="删除" href="javascript:;" onclick="admin_del(this,'1')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a></td>
+				<td th:text="${#dates.format(user.userbirthday,'yyyy-MM-dd')}">2014-6-11 11:11:42</td>
+				<td class="td-manage">
+					<a title="编辑" href="javascript:;" th:onclick="|admin_edit('管理员编辑','after/userUpdate','${user.uid}','800','500')|"  class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a>
+					<a title="删除" href="javascript:;" onclick="admin_del(this,'1')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a></td>
 			</tr>
 		</tbody>
 	</table>
@@ -109,6 +109,7 @@ function admin_del(obj,id){
 }
 /*管理员-编辑*/
 function admin_edit(title,url,id,w,h){
+	url=url+"/"+id;
 	layer_show(title,url,w,h);
 }
 /*管理员-停用*/

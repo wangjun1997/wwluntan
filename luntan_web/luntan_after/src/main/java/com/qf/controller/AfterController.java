@@ -7,6 +7,7 @@ import com.qf.service.IAfterService;
 import com.qf.service.IUserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
@@ -40,12 +41,35 @@ public class AfterController {
         return "after/login";
     }
 
-
+    /*查询所有用户信息的方法*/
     @RequestMapping("/userList")
     public String userList( Model model){
         List<User> useelist = userService.userlist();
         model.addAttribute("userlist",useelist);
         return "after/adminlist";
+    }
+
+    /*修改用户信息的方法*/
+    @RequestMapping("userUpdate/{id}")
+    public String userUpdate(@PathVariable("id") Integer id,Model model){
+        System.out.println("要修改的用户ID"+id);
+        User user = userService.getUserById(id);
+        model.addAttribute("user",user);
+        return "after/adminupdate";
+    }
+
+    /*修改个人信息的提交方法*/
+    @RequestMapping("userupdateById")
+    public String userUpdateById(User user){
+        System.out.println(user.getUsersex());
+        System.out.println(user.getUid());
+        System.out.println(user.getUsername());
+        System.out.println(user.getUseremail());
+        int count = userService.getUser(user);
+        if(count>0){
+            return "redirect:/after/userList";
+        }
+        return null;
     }
 
 }
