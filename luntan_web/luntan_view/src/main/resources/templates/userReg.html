@@ -1,10 +1,11 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
+<head><base href="/">
 <meta charset="utf-8">
 <title>安卓手机刷机论坛-用户注册</title>
 </head>
 <link th:href="@{css/css.css}" rel="stylesheet">
+<script th:src="@{js/jquery-1.8.2.js}"></script>
 <body bgcolor="#F7F7F7">
 <div class="Body">
 	<div class="Body_logo">
@@ -59,13 +60,13 @@
 <img src="img/注册.png" height="40">&nbsp;<b style="position:relative;bottom:13px;">用&nbsp;户&nbsp;注&nbsp;册</b><br>
 <div style="margin:40px;border:0px solid red;height:545px;">
 <h3 align="center">请填写注册信息：</h3><br>
-<div style="position:relative;left:280px;"><input type="text"  style="width:358px;height:50px;font-family:Bahnschrift Regular;font-size:15px;border-radius:10px;border-shadow:5px;" placeholder="请输入3-6位的数字+英文用户名" maxlength="6" id="txtname" onBlur="checkName()"><img src="img/right.png" style="display:none;" id="rig"><span id="tips">请输入3-6位的数字+英文用户名</span>
+<div style="position:relative;left:280px;"><input type="text"  style="width:358px;height:50px;font-family:Bahnschrift Regular;font-size:15px;border-radius:10px;border-shadow:5px;" name="username" placeholder="请输入3-6位的数字+英文用户名" maxlength="6" id="txtname" onBlur="checkName()"><img src="img/right.png" style="display:none;" id="rig"><span id="tips">请输入3-6位的数字+英文用户名</span>
 </div>
-<div style="position:relative;left:280px;top:10px;"><input type="password"  style="width:358px;height:50px;font-family:Bahnschrift Regular;font-size:15px;border-radius:10px;border-shadow:5px;" placeholder="请输入6-11位的数字+英文密码" maxlength="11" id="txtpwd" onBlur="checkPwd()"><img src="img/right.png" style="display:none;" id="rig1"><span id="tips1">请输入6-11位的数字+英文密码</span>
+<div style="position:relative;left:280px;top:10px;"><input type="password"  style="width:358px;height:50px;font-family:Bahnschrift Regular;font-size:15px;border-radius:10px;border-shadow:5px;" name="userpassword" placeholder="请输入6-11位的数字+英文密码" maxlength="11" id="txtpwd" onBlur="checkPwd()"><img src="img/right.png" style="display:none;" id="rig1"><span id="tips1">请输入6-11位的数字+英文密码</span>
 </div>
 <div style="position:relative;left:280px;top:20px;"><input type="password"  style="width:358px;height:50px;font-family:Bahnschrift Regular;font-size:15px;border-radius:10px;border-shadow:5px;" placeholder="请再次确认密码" maxlength="11" id="txtpwd2" onBlur="checkPwd2()"><img src="img/right.png" style="display:none;" id="rig2"><span id="tips2">请保证与上面密码一致！</span>
 </div>
-<div style="position:relative;left:280px;top:30px;"><input type="text"  style="width:358px;height:50px;font-family:Bahnschrift Regular;font-size:15px;border-radius:10px;border-shadow:5px;" placeholder="请输入用于找回密码的邮箱"  maxlength="30" id="txtmail" onBlur="checkMail()"><img src="img/right.png" style="display:none;" id="rig3"><span id="tips3">请输入正确的电子邮箱</span>
+<div style="position:relative;left:280px;top:30px;"><input type="text"  style="width:358px;height:50px;font-family:Bahnschrift Regular;font-size:15px;border-radius:10px;border-shadow:5px;" name="useremail" placeholder="请输入用于找回密码的邮箱"  maxlength="30" id="txtmail" onBlur="checkMail()"><img src="img/right.png" style="display:none;" id="rig3"><span id="tips3">请输入正确的电子邮箱</span>
 </div>
 <div style="position:relative;left:280px;top:40px;"><input type="text"  style="width:195px;height:50px;font-family:Bahnschrift Regular;font-size:15px;border-radius:10px;border-shadow:5px;" placeholder="请输入验证码"  maxlength="4">
 <div style="position:relative;left:210px;bottom:53px;"><canvas id="canvas" width="150px" height="50px" style="border-radius:3px;"></canvas>
@@ -131,9 +132,30 @@ function randomNum(min,max){
         return _picTxt;//返回随机数字符串
     }
     drawPic();
+    function send() {
+        if(checkAll()){
+            var name=$('#txtname').val();
+            var pass=$('#txtpwd').val();
+            var mail = $('#txtmail').val();
+            $.ajax({
+                type:"GET",
+                url:"user/register",
+                data:"username="+name+"&userpassword="+pass+"&useremail="+mail,
+                success:function (data) {
+                    if(data.res){
+                        alert("注册成功");
+                    }else{
+                        alert("注册失败");
+                    }
+                }
+            });
+        }else{
+            alert("输入不正确");
+        }
+    }
 </script>
 </div>
-<input type="submit"  style="width:358px;height:50px;font-family:Bahnschrift Regular;font-size:20px;border-radius:10px;border-shadow:5px;background:#FF7F00;" value="Register"  onClick="checkAll()">
+<input type="button"  style="width:358px;height:50px;font-family:Bahnschrift Regular;font-size:20px;border-radius:10px;border-shadow:5px;background:#FF7F00;" value="Register"  onClick="send()">
 </div>
 </div>
 </div>

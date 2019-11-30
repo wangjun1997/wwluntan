@@ -1,0 +1,19 @@
+
+dubbo:
+  protocol:
+    port: -1
+  application:
+    name: user-pro
+  consumer:
+    check: false
+  registry:
+    address: zookeeper://106.54.121.68:2181
+    timeout: 10000
+spring:
+  thymeleaf:
+    cache: false
+  datasource:
+    username: root
+    password: 123456
+    url: jdbc:mysql://106.54.121.68:3307/db_user?serverTimezone=GMT%2B8
+    driver-class-name: com.mysql.cj.jdbc.Driver

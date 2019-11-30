@@ -45,7 +45,7 @@ tab.onmouseover=function() {clearInterval(MyMar)};
 tab.onmouseout=function() {MyMar=setInterval(Marquee,speed)}; 
 
 function openWin(){
-		var url="userReg.html";
+		var url="/user/toregister";
 		open(url,"","width=1024px,height=748px")
 	}
 	
@@ -179,6 +179,7 @@ function checkMail(){
 					div.style.display="inline";
 					tip.innerHTML="邮箱格式符合！";
 					tip.style.color="green";
+					return true;
 			}
 			else
 			{
@@ -186,6 +187,7 @@ function checkMail(){
 					div.style.display="inline";
 					tip.innerHTML="邮箱格式不符合！";
 					tip.style.color="red";
+					return false;
 			}
 	}
 			
